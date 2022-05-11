@@ -42,7 +42,18 @@ content="default">
   -pandas
 </py-env>
 <body>
-  Hello world
+import asyncio
+
+import altair as alt
+import panel as pn
+import pandas as pd
+import random as rd
+import matplotlib as mth
+from panel.io.pyodide import show
+from sklearn.cluster import KMeans
+from pyodide.http import open_url
+
+pn.config.sizing_mode = 'stretch_width'
   <script src="script.js"></script>
 </body>
 
