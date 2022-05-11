@@ -106,23 +106,84 @@ def get_numero_de_ramas(numero_de_ramas):
 def get_numero_de_ramas(numero_de_ramas):
     kmeans = KMeans(numero_de_ramas=numero_de_ramas)
     est = kmeans.fit(grado1[columnas1].values)
-    df = grado1.copy()
-    df['labels'] = est.labels_.astype('str')
-    return df
+    df1 = grado1.copy()
+    df1['labels'] = est.labels_.astype('str')
+    return df1
 
 def get_numero_de_ramas(numero_de_ramas):
     kmeans = KMeans(numero_de_ramas=numero_de_ramas)
     est = kmeans.fit(grado2[columnas2].values)
-    df = grado2.copy()
-    df['labels'] = est.labels_.astype('str')
-    return df
+    df2 = grado2.copy()
+    df2['labels'] = est.labels_.astype('str')
+    return df2
 
 def get_numero_de_ramas(numero_de_ramas):
     kmeans = KMeans(numero_de_ramas=numero_de_ramas)
     est = kmeans.fit(grado3[columnas3].values)
-    df = grado3.copy()
-    df['labels'] = est.labels_.astype('str')
-    return df
+    df3 = grado3.copy()
+    df3['labels'] = est.labels_.astype('str')
+    return df3
+
+def get_chart(x, y, df):
+  centers = df.groupby('labels').mean()
+  return (alt.Chart(df)
+    .mark_point(size=100)
+    .encode(
+          x=alt.X(x, scale=alt.Scale(zero=False)),
+          y=alt.Y(y, scale=alt.Scale(zero=False)),
+          shape='labels',
+          color='species'
+        ).add_selection(brush).properties(width=800) +
+        alt.Chart(centers)
+            .mark_point(size=250, shape='cross', color='black')
+            .encode(x=x+':Q', y=y+':Q')
+    )
+
+def get_chart(x1, y1, df1):
+    centers = df1.groupby('labels').mean()
+    return (alt.Chart(df1)
+      .mark_point(size=100)
+      .encode(
+            x=alt.X(x1, scale=alt.Scale(zero=False)),
+            y=alt.Y(y1, scale=alt.Scale(zero=False)),
+            shape='labels',
+            color='species'
+          ).add_selection(brush).properties(width=800) +
+          alt.Chart(centers)
+              .mark_point(size=250, shape='cross', color='black')
+              .encode(x=x+':Q', y=y+':Q')
+      )
+
+def get_chart(x2, y2, df2):
+      centers = df2.groupby('labels').mean()
+      return (alt.Chart(df2)
+        .mark_point(size=100)
+        .encode(
+              x=alt.X(x2, scale=alt.Scale(zero=False)),
+              y=alt.Y(y2, scale=alt.Scale(zero=False)),
+              shape='labels',
+              color='species'
+            ).add_selection(brush).properties(width=800) +
+            alt.Chart(centers)
+                .mark_point(size=250, shape='cross', color='black')
+                .encode(x=x+':Q', y=y+':Q')
+        )
+
+def get_chart(x3, y3, df3):
+        centers = df3.groupby('labels').mean()
+        return (alt.Chart(df3)
+          .mark_point(size=100)
+          .encode(
+                x=alt.X(x3, scale=alt.Scale(zero=False)),
+                y=alt.Y(y3, scale=alt.Scale(zero=False)),
+                shape='labels',
+                color='species'
+              ).add_selection(brush).properties(width=800) +
+              alt.Chart(centers)
+                  .mark_point(size=250, shape='cross', color='black')
+                  .encode(x=x+':Q', y=y+':Q')
+          )
+
   <script src="script.js"></script>
 </body>
 
