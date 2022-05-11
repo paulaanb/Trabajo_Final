@@ -77,6 +77,22 @@ columnas = list(master.columns)[2:222]
 columnas1 = list(grado1.columns)[2:222]
 columnas2 = list(grado2.columns)[2:222]
 columnas3 = list(grado3.columns)[2:222]
+
+x = pn.widgets.Select(name='x', options=columnas, value='tipo_de_universidad')
+y = pn.widgets.Select(name='y', options=columnas, value='ramas')
+numero_de_ramas = pn.widgets.IntSlider(name='numero_de_ramas', start=1, end=10, value=3)
+
+x1 = pn.widgets.Select(name='x', options=columnas1, value='tipo_de_universidad')
+y1 = pn.widgets.Select(name='y', options=columnas1, value='ramas')
+numero_de_ramas = pn.widgets.IntSlider(name='numero_de_ramas', start=1, end=5, value=3)
+
+x2 = pn.widgets.Select(name='x', options=columnas2, value='tipo_de_universidad')
+y2 = pn.widgets.Select(name='y', options=columnas2, value='ramas')
+numero_de_ramas = pn.widgets.IntSlider(name='numero_de_ramas', start=1, end=5, value=3)
+
+x3 = pn.widgets.Select(name='x', options=columnas3, value='tipo_de_universidad')
+y3 = pn.widgets.Select(name='y', options=columnas3, value='ramas')
+numero_de_ramas = pn.widgets.IntSlider(name='numero_de_ramas', start=1, end=5, value=3)
   <script src="script.js"></script>
 </body>
 
