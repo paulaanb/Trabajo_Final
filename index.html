@@ -93,6 +93,36 @@ numero_de_ramas = pn.widgets.IntSlider(name='numero_de_ramas', start=1, end=5, v
 x3 = pn.widgets.Select(name='x', options=columnas3, value='tipo_de_universidad')
 y3 = pn.widgets.Select(name='y', options=columnas3, value='ramas')
 numero_de_ramas = pn.widgets.IntSlider(name='numero_de_ramas', start=1, end=5, value=3)
+
+brush = alt.selection_interval(name='brush')  # selection of type "interval"
+
+def get_numero_de_ramas(numero_de_ramas):
+    kmeans = KMeans(numero_de_ramas=numero_de_ramas)
+    est = kmeans.fit(master[columnas].values)
+    df = master.copy()
+    df['labels'] = est.labels_.astype('str')
+    return df
+
+def get_numero_de_ramas(numero_de_ramas):
+    kmeans = KMeans(numero_de_ramas=numero_de_ramas)
+    est = kmeans.fit(grado1[columnas1].values)
+    df = grado1.copy()
+    df['labels'] = est.labels_.astype('str')
+    return df
+
+def get_numero_de_ramas(numero_de_ramas):
+    kmeans = KMeans(numero_de_ramas=numero_de_ramas)
+    est = kmeans.fit(grado2[columnas2].values)
+    df = grado2.copy()
+    df['labels'] = est.labels_.astype('str')
+    return df
+
+def get_numero_de_ramas(numero_de_ramas):
+    kmeans = KMeans(numero_de_ramas=numero_de_ramas)
+    est = kmeans.fit(grado3[columnas3].values)
+    df = grado3.copy()
+    df['labels'] = est.labels_.astype('str')
+    return df
   <script src="script.js"></script>
 </body>
 
