@@ -65,8 +65,18 @@ from pyodide.http import open_url
 
 pn.config.sizing_mode = 'stretch_width'
 
-url= https://raw.githubusercontent.com/paulaanb/Trabajo_Final_Datos/main/EILU_MAST_2019.csv
-
+url = https://raw.githubusercontent.com/paulaanb/Trabajo_Final_Datos/main/EILU_MAST_2019.csv
+url1 = https://raw.githubusercontent.com/paulaanb/Trabajo_Final_Datos/main/EILU_GRAD_2019-1.csv
+url2 = https://raw.githubusercontent.com/paulaanb/Trabajo_Final_Datos/main/EILU_GRAD_2019-2.csv
+url3 = https://raw.githubusercontent.com/paulaanb/Trabajo_Final_Datos/main/EILU_GRAD_2019-3.csv
+master = pd.read_csv(open_url(url)).dropna()
+grado1 = pd.read_csv(open_url(url1)).dropna()
+grado2 = pd.read_csv(open_url(url2)).dropna()
+grado3 = pd.read_csv(open_url(url3)).dropna()
+columnas = list(master.columns)[2:222]
+columnas1 = list(grado1.columns)[2:222]
+columnas2 = list(grado2.columns)[2:222]
+columnas3 = list(grado3.columns)[2:222]
   <script src="script.js"></script>
 </body>
 
