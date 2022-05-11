@@ -183,7 +183,88 @@ def get_chart(x3, y3, df3):
                   .mark_point(size=250, shape='cross', color='black')
                   .encode(x=x+':Q', y=y+':Q')
           )
+chart = pn.pane.Vega()
+table = pn.widgets.Tabulator(pagination='remote', page_size=10)
 
+def update_table(event=None):
+    table.value = get_numero_de_ramas(numero_de_ramas.value)
+
+numero_de_ramas.param.watch(update_table, 'value')
+
+@pn.depends(x, y, numero_de_ramas, watch=True)
+def update_chart(*events):
+    chart.object = get_chart(x.value, y.value, table.value)
+    chart.selection.param.watch(update_filters, 'brush')
+
+def update_filters(event=None):
+    filters = []
+    for k, v in (getattr(event, 'new') or {}).items():
+       filters.append(dict(field=k, type='>=', value=v[0]))
+       filters.append(dict(field=k, type='<=', value=v[1]))
+    table.filters = filters
+
+update_table()
+update_chart()
+
+def update_table1(event=None):
+    table.value = get_numero_de_ramas(numero_de_ramas.value)
+
+numero_de_ramas.param.watch(update_table, 'value')
+
+@pn.depends(x1, y1, numero_de_ramas, watch=True)
+def update_chart_1(*events):
+    chart.object1 = get_chart(x1.value, y1.value, table1.value)
+    chart.selection.param.watch(update_filters, 'brush')
+
+def update_filters1(event=None):
+    filters1 = []
+    for k, v in (getattr(event, 'new') or {}).items():
+       filters.append(dict(field=k, type='>=', value=v[0]))
+       filters.append(dict(field=k, type='<=', value=v[1]))
+    table.filters1 = filters1
+
+update_table1()
+update_chart1()
+
+def update_table2(event=None):
+    table.value = get_numero_de_ramas(numero_de_ramas.value)
+
+numero_de_ramas.param.watch(update_table, 'value')
+
+@pn.depends(x2, y2, numero_de_ramas, watch=True)
+def update_chart2(*events):
+    chart.object2 = get_chart(x2.value, y2.value, table2.value)
+    chart.selection.param.watch(update_filters, 'brush')
+
+def update_filters2(event=None):
+    filters2 = []
+    for k, v in (getattr(event, 'new') or {}).items():
+       filters.append(dict(field=k, type='>=', value=v[0]))
+       filters.append(dict(field=k, type='<=', value=v[1]))
+    table.filters2 = filters2
+
+update_table2()
+update_chart2()
+
+def update_table_3(event=None):
+    table.value = get_numero_de_ramas(numero_de_ramas.value)
+
+numero_de_ramas.param.watch(update_table, 'value')
+
+@pn.depends(x3, y3, numero_de_ramas, watch=True)
+def update_chart3(*events):
+    chart.object3 = get_chart(x3.value, y3.value, table3.value)
+    chart.selection.param.watch(update_filters, 'brush')
+
+def update_filters3(event=None):
+    filters3 = []
+    for k, v in (getattr(event, 'new') or {}).items():
+       filters.append(dict(field=k, type='>=', value=v[0]))
+       filters.append(dict(field=k, type='<=', value=v[1]))
+    table.filters3 = filters3
+
+update_table3()
+update_chart3()
   <script src="script.js"></script>
 </body>
 
